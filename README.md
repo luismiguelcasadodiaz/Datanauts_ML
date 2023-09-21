@@ -46,3 +46,16 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
 
 [THE ACE SCIENCE CENTER](https://izw1.caltech.edu/ACE/ASC/)
 [SPACE WEATHER PREDICTION CENTER NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION](https://www.swpc.noaa.gov/products/lasco-coronagraph)
+
+
+# Planning
+## Goal
+Elaborate a friendly usage predicition machine 
+### EPICS
+0.- Define full stack
+1.- Identify data series
+2.- Automatize training data and new data upload
+3.- Data normalization
+4.- MOdel training
+5.- model validation
+6.- BUild Dashboard
