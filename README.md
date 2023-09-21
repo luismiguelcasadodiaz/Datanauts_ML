@@ -18,7 +18,7 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
 
  ## Sources of data
  ### proton files 1994..2016 
- - https://web.mit.edu/space/www/wind/wind_data.html
+ - [MIT Space Plasma Group](https://web.mit.edu/space/www/wind/wind_data.html)
  - ftp://space.mit.edu/pub/plasma/wind/kp_files/
    This data set has about 9000 Files (one per day each Missio day. Each file has 360 records of 15 fields each.
 #### Fields
@@ -40,3 +40,9 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
   - XSE (Re) s/c position
   - YSE (Re) s/c position
   - ZSE (Re) s/c position
+
+### Solar images
+[**So**lar & **H**eliospheric **O**bservatory mission -- SOHO --](https://www.nasa.gov/mission_pages/soho/index.html) 
+
+[THE ACE SCIENCE CENTER](https://izw1.caltech.edu/ACE/ASC/)
+[SPACE WEATHER PREDICTION CENTER NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION](https://www.swpc.noaa.gov/products/lasco-coronagraph)
