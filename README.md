@@ -20,6 +20,7 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
  ### proton files 1994..2016 
  - https://web.mit.edu/space/www/wind/wind_data.html
  - ftp://space.mit.edu/pub/plasma/wind/kp_files/
+   This data set has about 9000 Files (one per day each Missio day. Each file has 360 records of 15 fields each.
 #### Fields
 
   - year  
