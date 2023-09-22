@@ -31,7 +31,7 @@ done
 |50M	|2005/ |365|||
 |50M	|2006/ |362|||
 |52M	|2007/ |366|||
-|50M	|2008/ |380|In `temp_dir` 10 files with same names than in upper dir. `diff` command show they were equal. I remove it. ||
+|50M	|2008/ |380|In `temp_dir` 10 files with same names than in upper dir. `diff` command show they were equal. I remove it. <br /> uno <br /> dos||
 ||||\diff temp_dir/rdP2008060.01 rdP2008060.01 ||
 ||||\diff temp_dir/rdP2008062.01 rdP2008062.02 ||
 ||||\diff temp_dir/rdP2008062.01 rdP2008062.02 ||
