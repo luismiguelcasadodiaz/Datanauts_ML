@@ -70,3 +70,27 @@ Filter data since 2016
 ```python
 data = data[data['year'] >= 2016]
 ```
+Not all SunSpot count  is definitive. To know when provisional data starts ...
+```python
+data["date"] = pd.to_datetime(data[['year','month','day']])
+min_data = min(data[data['Definitive'] == 0]['date'])
+print("Split date {}\n".format(min_data))
+```
+Split date 2023-04-01 00:00:00
+
+I will use this data as esplitting date to get data set for trainig and data set for testing.
+
+to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
+
+```python
+data = data[['date', 'sun_spot', 'std_dvt']]
+```
+
+normalization
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+data['sun_spot_norm'] = scaler.fit_transform(data[['sun_spot']])
+data['std_dvt_norm'] = scaler.fit_transform(data[['std_dvt']])
+```
