@@ -49,3 +49,24 @@ done
 |13M	|2016/ |117|Files for days 001..117|117|
 |80K	|old/ |1|||
 
+
+# SunSpot Number
+Filename: SN_d_tot_V2.0.csv
+Format: Comma Separated values (adapted for import in spreadsheets)
+The separator is the semicolon ';'.
+
+Contents:
+Column 1-3: Gregorian calendar date
+- Year
+- Month
+- Day
+Column 4: Date in fraction of year.
+Column 5: Daily total sunspot number. A value of -1 indicates that no number is available for that day (missing value).
+Column 6: Daily standard deviation of the input sunspot numbers from individual stations.
+Column 7: Number of observations used to compute the daily value.
+Column 8: Definitive/provisional indicator. '1' indicates that the value is definitive. '0' indicates that the value is still provisional.
+
+Filter data since 2016 
+```python
+data = data[data['year'] >= 2016]
+```
