@@ -115,6 +115,7 @@ data['sun_spot_norm'] = scaler.fit_transform(data[['sun_spot']])
 data = data[['date', 'sun_spot']]
 ```
 ![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/4a86686b-731a-4cca-a471-c8948c286bb8)
+
 ![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/33f786f9-4887-496e-a391-2ea72aa2d671)
 
 
