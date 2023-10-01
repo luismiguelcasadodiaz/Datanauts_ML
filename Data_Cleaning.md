@@ -88,7 +88,7 @@ print("Split date {}\n".format(min_data))
 ```
 Split date 2023-04-01 00:00:00
 
-I will use this data as esplitting date to get data set for trainig (2647) and data set for testing (153).
+I will use this data as splitting date to get data set for trainig (2647) and data set for testing (153).
 ```python
 count = sum(data['definitive'] == 1)
 print("there are {} definitive values\n".format(count))
@@ -99,11 +99,6 @@ print("there are {} preliminary values\n".format(count))
 There are 2647 definitive values.
 There are 153 preliminary values.
 
-## to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
-
-```python
-data = data[['date', 'sun_spot', 'std_dvt']]
-```
 
 ## Normalization
 
@@ -111,5 +106,15 @@ data = data[['date', 'sun_spot', 'std_dvt']]
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 data['sun_spot_norm'] = scaler.fit_transform(data[['sun_spot']])
-data['std_dvt_norm'] = scaler.fit_transform(data[['std_dvt']])
+
 ```
+
+## to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
+
+```python
+data = data[['date', 'sun_spot']]
+```
+![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/4a86686b-731a-4cca-a471-c8948c286bb8)
+![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/33f786f9-4887-496e-a391-2ea72aa2d671)
+
+
