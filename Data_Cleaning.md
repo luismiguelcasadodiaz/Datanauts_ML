@@ -73,6 +73,12 @@ The separator is the semicolon ';'.
 ```python
 data = data[data['year'] >= 2016]
 ```
+## are there missing values?
+count -1 values in column 5 'sun_spot'
+```python
+count = sum(data['sun_spot'] == -1)
+```
+there ares 0 missing values
 
 ## Not all SunSpot count  is definitive. To know when provisional data starts ...
 ```python
@@ -82,7 +88,16 @@ print("Split date {}\n".format(min_data))
 ```
 Split date 2023-04-01 00:00:00
 
-I will use this data as esplitting date to get data set for trainig and data set for testing.
+I will use this data as esplitting date to get data set for trainig (2647) and data set for testing (153).
+```python
+count = sum(data['definitive'] == 1)
+print("there are {} definitive values\n".format(count))
+
+count = sum(data['definitive'] == 0)
+print("there are {} preliminary values\n".format(count))
+```
+There are 2647 definitive values.
+There are 153 preliminary values.
 
 ## to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
 
