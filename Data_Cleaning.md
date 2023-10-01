@@ -56,8 +56,9 @@ Format: Comma Separated values (adapted for import in spreadsheets)
 The separator is the semicolon ';'.
 
 ## Contents:
+
 | Column | Description|
-|--------|             |
+|--------|-------------|
 |Column 1|Year Gregorian calendar date.|
 |Column 2|Month Gregorian calendar date.|
 |Column 3|Day Gregorian calendar date.|
