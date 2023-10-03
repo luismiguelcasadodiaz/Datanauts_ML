@@ -18,7 +18,7 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
 
  ## Sources of data
 
- ### [KP} (https://kp.gfz-potsdam.de/en/about-kp)
+ ### [KP] (https://kp.gfz-potsdam.de/en/about-kp)
  ### proton files 1994..2016 
  - [MIT Space Plasma Group](https://web.mit.edu/space/www/wind/wind_data.html)
  - ftp://space.mit.edu/pub/plasma/wind/kp_files/
