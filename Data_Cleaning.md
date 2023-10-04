@@ -41,7 +41,7 @@ print("Split date {}\n".format(min_data))
 ```
 Split date 2023-04-01 00:00:00
 
-I will use this data as splitting date to get data set for trainig (2647) and data set for testing (153).
+I will use this data as a splitting date to get the data set for preparing the data model (2647) and data set for testing (153).
 ```python
 count = sum(data['definitive'] == 1)
 print("there are {} definitive values\n".format(count))
@@ -62,7 +62,7 @@ data['sun_spot_norm'] = scaler.fit_transform(data[['sun_spot']])
 
 ```
 
-## to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
+## To save memory and speed up the process I keep only tree columns Date, Spot_num, and Std_dev
 
 ```python
 data = data[['date', 'sun_spot']]
@@ -87,12 +87,12 @@ The file to use upfront is `sunspot_since_2016.csv`. it has a weight of 63 KB
 |Column 01|Year Gregorian calendar date.|
 |Column 02|Month Gregorian calendar date.|
 |Column 03|Day Gregorian calendar date.|
-|Column 04|Hour initial for a 3 hours interval for which Kp is given.|
-|Column 05|Hour mid for a 3 hours interval for which ks is given.|
-|Column 06|Days since 1932 to start opterval.|
-|Column 07|Days since 1932 to mid of interval.|
+|Column 04|Hour initial for a 3-hour interval for which Kp is given.|
+|Column 05|Hour mid for a 3-hour interval for which ks is given.|
+|Column 06|Days from 1932 to start interval.|
+|Column 07|Days from 1932 to mid of interval.|
 |Column 08|Kp, Planetary three-hour index for the interval.
-|Column 09|Ap, Planetary amplitud fot the three-hour equivalente interval.|
+|Column 09|Ap, Planetary amplitude fot the three-hour equivalent interval.|
 |Column 10|Definitive/provisional indicator. '0'= Kp & Ap preliminary, '1'= Kp definitive, Ap Preliminary, '2' = Kp & Ap definitive.|
 
 ## When preliminary data starts
@@ -124,7 +124,7 @@ The file to use upfront is `kp_since_2016.csv`. it has a weight of 461KB.
 
 # Merge sunspots into Kp_index File
 
-Both file, kp & sunspot have a commond comlun name `date`. it will be the key to join the dataframes on it.
+Both files, kp & sunspot, have a common column name `date`. it will be the key to joiniing the data frames on it.
 
 
 ```python
@@ -134,7 +134,7 @@ join = pd.merge(kp, sn, on="date")
 |---|----------|---------|------|---------------|
 |0  |2016-01-01|      3.0| 5.333|       0.154167|
 |1  |2016-01-01|      6.0| 5.000|       0.154167|
-|2  12016-01-01|      9.0| 3.333|       0.154167|
+|2  |2016-01-01|      9.0| 3.333|       0.154167|
 
 ---
  # DSCOVR
@@ -235,16 +235,16 @@ sa.fillna(0, inplace = True)
 
 We can apreciate that three columns have negative values. 
 
-|     |date                |MF_nT_GSE_x  |MF_nT_GSE_y|MF_nT_GSE_z|C_04|...|C_49|C_50|C_51|C_52|C_53|
-|-----|--------------------|-------------|---|---|---|---|---|---|---|---|---|---|
-|count|3277440             |3.277440e+06-|3.277440e+06|3.277440e+06|3.277440e+06|...|3.277440e+06|3.277440e+06|3.277440e+06|3.277440e+06|3.277440e+06|
-|mea n|2019-11-24 16:42:18.717038592|7.972786e-02|-1.248412e-01|2.159501e-02|3.201943e+01|...|4.196891e+00|3.816626e+00|3.062619e+00|3.362869e+00|2.718429e+00|
-|min  |2016-01-01 00:00:00 |-2.014280e+01|-3.178510e+01|-3.332440e+01|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
-|25%  |2018-01-04 11:59:45 |-2.519810e+00|-2.627630e+00|-1.511620e+00|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
-|50%  |2020-03-20 23:59:30 |1.384060e-01|-1.851820e-01|1.646555e-02|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
-|75%  |2021-10-10 23:59:15 |2.660292e+00|2.381362e+00|1.542450e+00|5.360380e+01|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
-|max  |2023-05-02 23:59:00 |3.304940e+01|2.789380e+01|3.483770e+01|1.675760e+03|...|1.719110e+03|1.939020e+03|1.852740e+03|1.875050e+03|1.866960e+03|
-|std  |NaN                 |3.401187e+00|3.755768e+00|2.974669e+00|5.610893e+01|...|4.033789e+01|3.864041e+01|3.373489e+01|3.760109e+01|3.188347e+01|
+|     |date                         |MF_nT_GSE_x  |MF_nT_GSE_y  |MF_nT_GSE_z  |C_04        |...|        C_49|        C_50|        C_51|        C_52|C_53        |
+|-----|-----------------------------|-------------|-------------|-------------|------------|---|------------|------------|------------|------------|------------|
+|count|3277440                      | 3.277440e+06| 3.277440e+06| 3.277440e+06|3.277440e+06|...|3.277440e+06|3.277440e+06|3.277440e+06|3.277440e+06|3.277440e+06|
+|mea n|2019-11-24 16:42:18.717038592| 7.972786e-02|-1.248412e-01| 2.159501e-02|3.201943e+01|...|4.196891e+00|3.816626e+00|3.062619e+00|3.362869e+00|2.718429e+00|
+|min  |2016-01-01 00:00:00          |-2.014280e+01|-3.178510e+01|-3.332440e+01|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
+|25%  |2018-01-04 11:59:45          |-2.519810e+00|-2.627630e+00|-1.511620e+00|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
+|50%  |2020-03-20 23:59:30          | 1.384060e-01|-1.851820e-01| 1.646555e-02|0.000000e+00|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
+|75%  |2021-10-10 23:59:15          | 2.660292e+00| 2.381362e+00| 1.542450e+00|5.360380e+01|...|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|0.000000e+00|
+|max  |2023-05-02 23:59:00          | 3.304940e+01| 2.789380e+01| 3.483770e+01|1.675760e+03|...|1.719110e+03|1.939020e+03|1.852740e+03|1.875050e+03|1.866960e+03|
+|std  |NaN                          | 3.401187e+00| 3.755768e+00| 2.974669e+00|5.610893e+01|...|4.033789e+01|3.864041e+01|3.373489e+01|3.760109e+01|3.188347e+01|
 
 So we normalize differently natural comuns than integer column 
 ```python
