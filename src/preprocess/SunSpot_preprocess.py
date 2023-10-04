@@ -1,6 +1,21 @@
 #!/home/luis/.venv/inquisitor/bin/python
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    SunSpot_preprocess.py                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/03 10:34:04 by luicasad          #+#    #+#              #
+#    Updated: 2023/10/03 10:34:04 by luicasad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 # Sun Spot Number
 #Filename: SN_d_tot_V2.0.csv
+#Source : https://www.sidc.be/index.php/SILSO/datafiles
+#LICENSE: CC BY-NC4.0
 #Format: Comma Separated values (adapted for import in spreadsheets)
 #The separator is the semicolon ';'.
 #
@@ -21,14 +36,15 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 # File path
-home_dir = os.path.expanduser("~")
+os.chdir("../..")
 home_dir = os.getcwd()
 data_folder = home_dir + '/data/SunSpotNumber/'
 in_file_name = 'SN_d_tot_V2.0.csv'
-ou_file_name = 'sunspot_since_20162.csv'
+ou_file_name = 'sunspot_since_2016.csv'
 in_file_path = data_folder + in_file_name
 ou_file_path = data_folder + ou_file_name
-# Load the data into a DataFrame
+
+# Load the data into a DataFrame and set up headers names.
 data = pd.read_csv(in_file_path, delimiter= ';')
 columns = ["year", "month", "day", "year_fraction", "sun_spot", "std_dvt", "observations","definitive"]
 data.columns = columns
@@ -63,5 +79,4 @@ data['sun_spot_norm'] = scaler.fit_transform(data[['sun_spot']])
 #to save memory and speed up the process I keep only tree columns Date, Spot_num and Std_dev
 data = data[['date', 'sun_spot_norm']]
 data.to_csv(ou_file_path, index= False)
-data.head()
-data.tail()
+print(data.iloc[[0,1, 2]])
