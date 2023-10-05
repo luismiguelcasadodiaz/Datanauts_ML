@@ -17,7 +17,22 @@ from sklearn.preprocessing import MinMaxScaler
 
 def	print_head_tail(df):
 	print(df.iloc[[0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, df.index[-3],df.index[-2],df.index[-1]]])
+def save_transformed(df):
+	print("Saving transformed data.....")
+	home_dir = os.getcwd()
+
+	# File path
+	tr_data_folder =  home_dir +'/data/transformed/'
+	tr_file_name = 'data_model_kp_sn_sat.csv'
+	tr_file_path = tr_data_folder + tr_file_name
+
+	# Save data
+	df.to_csv(tr_file_path, index= False)
+	
+
+
 def get_kp_sn():
+	print("Reading Kp & sunspots ....")
 	home_dir = os.getcwd()
 
 	# File path
@@ -31,6 +46,7 @@ def get_kp_sn():
 	return kp_sn
 
 def	get_sa():
+	print("Reading satellite data ...")
 	home_dir = os.getcwd()
 
 	# File path
@@ -66,7 +82,6 @@ def filter_rows_by_date_range(df, start_date, end_date):
 
   # Select the rows from the DataFrame that match the boolean mask.
   filtered_df = df.loc[mask]
-
   return filtered_df
 
 def	dataframe_to_row(kp_date,df, kp,sun_spot):
@@ -92,7 +107,8 @@ def	dataframe_to_row(kp_date,df, kp,sun_spot):
 			row_list.append(column_value)
 	row_list.append(sun_spot)
 	row_list.append(kp)
-	return row_list
+	df = pd.DataFrame(row_list)
+	return df.T
 
 
 def prepare_dates(day, hour):
@@ -122,24 +138,38 @@ def	transform(sa,  kp_sn):
 	result	:A new dataframe with one record per each three hours, as defined
 			 by kp_sn, where each record has 9487 columns resulting of 
 			 concatenate 180-record (three hours) from sa.
+
+	OPERATION
+			loop Kp index dataframe.
+				for each row filter satellite data by proper dates
+				concatenate them to get a (9354 x 1) data frame
+				append such dataframe into a list of dataframes
+			return the concatenation (UNION) of the dataframes in the list
 	"""
+	print("Transforming data ....")
 	counter = 0
+	dataframes = []
 	for kp_row in kp_sn.itertuples():
 		start, end = prepare_dates(day=kp_row.date, hour=kp_row.hour_ini)
 		filtered_df = filter_rows_by_date_range(sa, start, end)
-		print(filtered_df)
-		row_df = dataframe_to_row(start, filtered_df,kp_row.kp, kp_row.sun_spot_norm)
-		print("============{}=>\n{}".format(counter, row_df))
-		counter = counter + 1
-		if (counter == 3):
-			break
+		if (len(filtered_df.index) != 0):
+			#print(filtered_df)
+			row_df = dataframe_to_row(start, filtered_df,kp_row.kp, kp_row.sun_spot_norm)
+			#print("============{}=>\n{}".format(counter, row_df))
+			dataframes.append(row_df)
+			counter = counter + 1
+			print(counter)
+			#if (counter == 3):
+			#	break
+		else:
+			start = start.strftime('%Y-%m-%d %X')
+			end = end.strftime('%Y-%m-%d %X')
+			print("No satellite data in [{}, {}[".format(start, end))
+	return pd.concat(dataframes)
 			
 if __name__ == '__main__':
 	os.chdir("../..")
 	kp_sn = get_kp_sn()
 	sa = get_sa()
-	transform(sa, kp_sn)
-	"""
-	filtered_df = filter_rows_by_date_range(sa, '2016-12-17 23:00:00', '2016-12-17 23:01:00')
-	print(filtered_df)
-	"""
+	transformed = transform(sa, kp_sn)
+	save_transformed(transformed)
