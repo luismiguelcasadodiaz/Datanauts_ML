@@ -65,4 +65,4 @@ Elaborate a friendly usage predicition machine
 5.- model validation
 6.- BUild Dashboard
 
-[data cleaning](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/blob/main/Data_Cleaning)
+[data cleaning](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/blob/main/Data_Cleaning.md)
