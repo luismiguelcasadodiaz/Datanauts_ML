@@ -268,7 +268,20 @@ sa[natural_columns] = natural_scaler.fit_transform(sa[natural_columns])
 
 [6 rows x 54 columns]
 
+## Missing days
 
+There are no satellite data in 3 periods
+|From       | to     |
+|-----------|--------|
+|04-01-2016|30-06-2021|
+|28-06-2019|24-02-2020|
+|03-05-2023|31-08-2023|
+
+The is the equivalent to  4256 3-hour intervals form Kp file.
+
+## Preprocessed data file
+
+The file to use upfront is `data_model_kp_sn_sat.csv`. it has a weight of 2130MB
 
 
 ---
