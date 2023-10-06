@@ -41,7 +41,6 @@ print("Split date {}\n".format(min_data))
 ```
 Split date 2023-04-01 00:00:00
 
-I will use this data as a splitting date to get the data set for preparing the data model (2647) and data set for testing (153).
 ```python
 count = sum(data['definitive'] == 1)
 print("there are {} definitive values\n".format(count))
@@ -101,6 +100,8 @@ The file to use upfront is `sunspot_since_2016.csv`. it has a weight of 63 KB
 min_data = min(data[data['definitive'] == 0]['date']) 
 ```
 Preliminary data starts at 2023-09-01 00:00:00
+
+
 
 ## to save memory and speed up the process I keep only tree columns Date, hout_ini and Kp
 
@@ -212,7 +213,8 @@ This table shows per column, how many rows have NaN values.
 |C_46 = 3173983|C_47 = 3207326|C_48 = 3216033|C_49 = 3239739|C_50 = 3243152|
 |C_51 = 3247843|C_52 = 3248982|C_53 = 3251170|||
 
-
+In total there are  89 413 068 NaN values in a data set of 3 277 439 x 53 = 173 704 267 data points.
+A 51,47% of Satellite dataset datapoints are NaN values, ergo zeroes. Maybe i have to think about sparse matrix.
 
 ## Nan Substitution
 
@@ -266,7 +268,20 @@ sa[natural_columns] = natural_scaler.fit_transform(sa[natural_columns])
 
 [6 rows x 54 columns]
 
+## Missing days
 
+There are no satellite data in 3 periods
+|From       | to     |
+|-----------|--------|
+|04-01-2016|30-06-2021|
+|28-06-2019|24-02-2020|
+|03-05-2023|31-08-2023|
+
+The is the equivalent to  4256 3-hour intervals form Kp file.
+
+## Preprocessed data file
+
+The file to use upfront is `data_model_kp_sn_sat.csv`. it has a weight of 2130MB
 
 
 ---

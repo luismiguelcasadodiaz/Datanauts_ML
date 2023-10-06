@@ -1,6 +1,9 @@
 # Helio_Sentinel_Crew
 Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**limate **O**bser**v**ato**r**y
 
+![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/dc855435-624d-4eae-8ce2-36e78574cd9d)
+
+
 
  ## Challenge:
  - Use the "raw" data from DSCOVR—faults and all— as input to predict geomagnetic storms on Earth. 
