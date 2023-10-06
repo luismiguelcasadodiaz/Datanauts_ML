@@ -71,7 +71,7 @@ data = data[['date', 'sun_spot']]
 |-----|----------|--------------|
 |72317|2016-01-01|      0.154167|
 |72318|2016-01-02|      0.166667|
-|72319|2016-01-031      0.212500|
+|72319|2016-01-03|      0.212500|
 
 ## Preprocessed data file
 
@@ -91,7 +91,7 @@ The file to use upfront is `sunspot_since_2016.csv`. it has a weight of 63 KB
 |Column 06|Days from 1932 to start interval.|
 |Column 07|Days from 1932 to mid of interval.|
 |Column 08|Kp, Planetary three-hour index for the interval.
-|Column 09|Ap, Planetary amplitude fot the three-hour equivalent interval.|
+|Column 09|Ap, Planetary amplitude for the three-hour equivalent interval.|
 |Column 10|Definitive/provisional indicator. '0'= Kp & Ap preliminary, '1'= Kp definitive, Ap Preliminary, '2' = Kp & Ap definitive.|
 
 ## When preliminary data starts
@@ -103,7 +103,7 @@ Preliminary data starts at 2023-09-01 00:00:00
 
 
 
-## to save memory and speed up the process I keep only tree columns Date, hout_ini and Kp
+## To save memory and speed up the process I keep only tree columns Date, hout_ini, and Kp
 
 ```python
 data = data[['date', 'hour_ini', 'kp']]
@@ -115,7 +115,7 @@ data = data[['date', 'hour_ini', 'kp']]
 |2    |2016-01-01|      9.0| 3.333|
 |22652|2023-10-02|     15.0| 1.333|
 |22653|2023-10-02|     18.0| 1.333|
-122654|2023-10-02|     21.0| 2.333|
+|22654|2023-10-02|     21.0| 2.333|
 
 ## Preprocessed data file
 
@@ -125,7 +125,7 @@ The file to use upfront is `kp_since_2016.csv`. it has a weight of 461KB.
 
 # Merge sunspots into Kp_index File
 
-Both files, kp & sunspot, have a common column name `date`. it will be the key to joiniing the data frames on it.
+Both files, kp & sunspot, have a common column name `date`. it will be the key to joining the data frames on it.
 
 
 ```python
@@ -141,12 +141,12 @@ join = pd.merge(kp, sn, on="date")
  # DSCOVR
 [data source](https://www.spaceappschallenge.org/develop-the-oracle-of-dscovr-experimental-data-repository/)
 
-The data files in this repository contain measurements from the DSCOVR PlasMAG instrument suite, recorded in the solar wind near the Earth-Sun L1 Lagrange Point between 2016 and present day.
+The data files in this repository contain measurements from the DSCOVR PlasMAG instrument suite, recorded in the solar wind near the Earth-Sun L1 Lagrange Point between 2016 and the present day.
 
 Each file corresponds to one year of measurements. The measurements themselves have been condensed and decimated to a cadence of one measurement set per minute.
 
 
-|lines    | File name for year 
+|lines    | File name for a year 
 |:-------:|:---------------------------------|
 |   283680|dsc_fc_summed_spectra_2016_v01.csv|
 |   525600|dsc_fc_summed_spectra_2017_v01.csv|
@@ -213,8 +213,8 @@ This table shows per column, how many rows have NaN values.
 |C_46 = 3173983|C_47 = 3207326|C_48 = 3216033|C_49 = 3239739|C_50 = 3243152|
 |C_51 = 3247843|C_52 = 3248982|C_53 = 3251170|||
 
-In total there are  89 413 068 NaN values in a data set of 3 277 439 x 53 = 173 704 267 data points.
-A 51,47% of Satellite dataset datapoints are NaN values, ergo zeroes. Maybe i have to think about sparse matrix.
+In total, there are  89 413 068 NaN values in a data set of 3 277 439 x 53 = 173 704 267 data points.
+A 51,47% of Satellite dataset data points are NaN values, ergo zeroes. Maybe I have to think about a sparse matrix.
 
 ## Nan Substitution
 
@@ -235,7 +235,7 @@ sa.fillna(0, inplace = True)
 
 ## Normalization
 
-We can apreciate that three columns have negative values. 
+We can appreciate that three columns have negative values. 
 
 |     |date                         |MF_nT_GSE_x  |MF_nT_GSE_y  |MF_nT_GSE_z  |C_04        |...|        C_49|        C_50|        C_51|        C_52|C_53        |
 |-----|-----------------------------|-------------|-------------|-------------|------------|---|------------|------------|------------|------------|------------|
@@ -277,7 +277,7 @@ There are no satellite data in 3 periods
 |28-06-2019|24-02-2020|
 |03-05-2023|31-08-2023|
 
-The is the equivalent to  4256 3-hour intervals form Kp file.
+This is the equivalent of  4256 3-hour intervals from Kp file.
 
 ## Preprocessed data file
 
@@ -293,7 +293,7 @@ about the file names Pxyyy.zz or rdP199xyyy.zz
 
 Where 
 P stands for plasma, x = 4 for 1994, x = 5 for 1995 and so on.
-yyy is the day of year (January 1=001).
+yyy is the day of the year (January 1=001).
 zz is the key parameter file version number (typically 02 or higher).
 
 ### Is there one file per day?
@@ -324,7 +324,7 @@ done
 |50M	|2005/ |395|Missing file for day 21. <br/> rm -rf old|364|
 |50M	|2006/ |406|Missing files for days 328..332 rm -xf old<br/> rm rdP2006033.01|360|
 |52M	|2007/ |422|rm -rf old|365|
-|50M	|2008/ |380|In `temp_dir` 10 files with same names than in upper dir. `diff` command show they were equal. I remove it.<br /> diff temp_dir/rdP2008060.01 rdP2008060.01<br /> diff temp_dir/rdP2008062.01 rdP2008062.02<br /> diff temp_dir/rdP2008062.01 rdP2008062.02<br /> diff temp_dir/rdP2008063.01 rdP2008063.02<br /> diff temp_dir/rdP2008064.01 rdP2008064.02<br /> diff temp_dir/rdP2008065.01 rdP2008065.02<br /> diff temp_dir/rdP2008066.01 rdP2008066.03<br /> diff temp_dir/rdP2008067.01 rdP2008067.02<br /> diff temp_dir/rdP2008068.02 rdP2008068.03<br /> diff temp_dir/rdP2008069.01 rdP2008069.02 <br/> <br/> `old` file relates to day 353. as ther is an rdP2008353.03 file, I remove olf file. <br/> <br/> for days 28 i found two diffent files on zz code. I keep the higher one.<br /> rm rdP2008028.01 <br />rm rdP2008035.01 <br /> rm rdP2008070.01 <br />rm rdP2008073.02 <br />rm rdP2008074.01 <br />rm rdP2008075.02<br />rm rdP2008076.01 <br />rm rdP2008080.01 <br />rm rdP2008081.01 <br />rm rdP2008082.01 <br />rm rdP2008083.01 <br />rm rdP2008220.01 <br />rm rdP2008254.01 <br />|365|
+|50M	|2008/ |380|In `temp_dir` 10 files with the same names as in the upper dir. `diff` command show they were equal. I remove it.<br /> diff temp_dir/rdP2008060.01 rdP2008060.01<br /> diff temp_dir/rdP2008062.01 rdP2008062.02<br /> diff temp_dir/rdP2008062.01 rdP2008062.02<br /> diff temp_dir/rdP2008063.01 rdP2008063.02<br /> diff temp_dir/rdP2008064.01 rdP2008064.02<br /> diff temp_dir/rdP2008065.01 rdP2008065.02<br /> diff temp_dir/rdP2008066.01 rdP2008066.03<br /> diff temp_dir/rdP2008067.01 rdP2008067.02<br /> diff temp_dir/rdP2008068.02 rdP2008068.03<br /> diff temp_dir/rdP2008069.01 rdP2008069.02 <br/> <br/> `old` file relates to day 353. as there is an rdP2008353.03 file, I remove the old file. <br/> <br/> For day 28 I found two different files on ZZ code. I keep the higher one.<br /> rm rdP2008028.01 <br />rm rdP2008035.01 <br /> rm rdP2008070.01 <br />rm rdP2008073.02 <br />rm rdP2008074.01 <br />rm rdP2008075.02<br />rm rdP2008076.01 <br />rm rdP2008080.01 <br />rm rdP2008081.01 <br />rm rdP2008082.01 <br />rm rdP2008083.01 <br />rm rdP2008220.01 <br />rm rdP2008254.01 <br />|365|
 |48M	|2009/ |369|<br/> rm old <br/> rm rdP2009025.01<br/> rm rdP2009090.01<br/> rm rdP2009208.01|365|
 |47M	|2010/ |367|<br/> rm old<br/> rmrdP2010271.01 |365|
 |46M	|2011/ |364|Missing file for day 240 224||
