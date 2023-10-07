@@ -98,6 +98,15 @@ def	dataframe_to_row(kp_date,df, kp,sun_spot):
 
 	RETURNS
 	df_row	: [kp_date, 180 x 53 = 9540 measures, sun_spot, Kp]
+
+	OPERATION
+			Insert into the first position of a list a date.
+			loop over dataset rows (180)
+				Append to the list each column of the row
+			append num of sun spots
+			append kp
+			convert the listo into a new data frame
+			retuen new data fram transposed.
 			 
 	"""
 	row_list = []
@@ -107,8 +116,8 @@ def	dataframe_to_row(kp_date,df, kp,sun_spot):
 			row_list.append(column_value)
 	row_list.append(sun_spot)
 	row_list.append(kp)
-	df = pd.DataFrame(row_list)
-	return df.T
+	df_row = pd.DataFrame(row_list)
+	return df_row.T
 
 
 def prepare_dates(day, hour):
