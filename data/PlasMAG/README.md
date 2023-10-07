@@ -12,3 +12,5 @@ In this folder you will find 40  pieces of the model
 
 After clonning this repository, use `cat sat_dat* >> satellite_data.csv`
 
+You will get a 3 265 921 lines file whose shasum -a 512 satellite_data.csv is
+fa98a2ac6044462d938ba89b6cd9fdcb367271fa339fc8cabd0619d4c6e914c6a621f02d031b55d79833ff68ca62600aef37bf7cf97a40002d358a5c60d1b3ac
