@@ -287,7 +287,11 @@ The file to use upfront is `data_model_kp_sn_sat.csv`. it has a weight of 2130MB
 ---
 
 ## Dataset 
-9857 files.
+[source](ftp://space.mit.edu/pub/plasma/wind/kp_files/)
+USING FTP:
+  ftp to space.mit.edu
+   login name = anonymous
+    password = put_your_email_address_here
 
 about the file names Pxyyy.zz or rdP199xyyy.zz 
 
