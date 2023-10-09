@@ -3,6 +3,8 @@ Nasa Apps Challenge 2023 Develop the Oracle of DSCOVR (**D**eep **S**pace **C**l
 
 ![image](https://github.com/luismiguelcasadodiaz/Helio_Sentinel_Crew/assets/19540140/dc855435-624d-4eae-8ce2-36e78574cd9d)
 
+![image](https://github.com/luismiguelcasadodiaz/Datanauts_ML/assets/19540140/6a59f2d6-f5aa-49cd-9643-446104d32f85)
+![image](https://github.com/luismiguelcasadodiaz/Datanauts_ML/assets/19540140/3949b37a-cb21-411c-b415-68b64933d7da)
 
 
  ## Challenge:
